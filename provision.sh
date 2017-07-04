@@ -22,7 +22,8 @@ sudo apt-get -y autoremove
 # Vim it has to be manually installed, complaining about not getting some downloads 
 echo "To install full vim"
 sudo apt-get --yes --force-yes install vim
-
+echo "To install tree command"
+sudo apt-get -y install tree
 echo "Install java8"
 echo "If it hangs at setting grub-pc, please run:"
 echo "sudo dpkg --configure -a"
@@ -128,6 +129,11 @@ echo "export HADOOP_CONF_DIR=/home/vagrant/config/hadoop" >> ~/.profile
 export HADOOP_CONF_DIR=/home/vagrant/config/hadoop
 echo "Formatting namenode"
 hdfs namenode -format
+
+echo "Copy start and stop scripts for hadoop"
+cp /vagrant/scripts/start-all.sh ~/
+cp /vagrant/scripts/stop-all.sh ~/
+
 echo "Sucecessfully Finished provisioning of vagrant."
 echo "vagrant ssh to start using."
 
