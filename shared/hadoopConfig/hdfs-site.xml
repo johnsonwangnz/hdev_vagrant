@@ -21,4 +21,14 @@
         <name>dfs.replication</name>
         <value>1</value>
     </property>
+    <property>
+        <name>dfs.namenode.name.dir</name>
+        <value>file:///home/vagrant/hddata/namenode</value>
+        <description>NameNode directory for namespace and transaction logs storage.</description>
+    </property>
+    <property>
+        <name>dfs.datanode.data.dir</name>
+        <value>file:///home/vagrant/hddata/datanode</value>
+        <description>DataNode directory</description>
+    </property>	
 </configuration>

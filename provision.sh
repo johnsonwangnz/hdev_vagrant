@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# this is running as root
+# this runs as root as default, but previlege is off in Vagrantfile, therefore it runs as vagrant
 #stop on error
 set -e
 echo "If there was a problem, please correct and destroy and start provision process again, as the script only suppose to be run once..."
@@ -21,7 +21,7 @@ sudo apt-get -y clean
 sudo apt-get -y autoremove
 # Vim it has to be manually installed, complaining about not getting some downloads 
 echo "To install full vim"
-sudo apt-get --yes --force-yes install vim
+sudo apt-get -y  install vim
 echo "To install tree command"
 sudo apt-get -y install tree
 echo "Install java8"
@@ -121,12 +121,16 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 echo "Add pseudodistributed configuration"
 mkdir -p ~/config
+mkdir -p ~/hddata
 cp -r /home/vagrant/apps/hadoop/etc/hadoop  ~/config
 #copy config files 
 cp -r /vagrant/hadoopConfig/. ~/config/hadoop/
 
 echo "export HADOOP_CONF_DIR=/home/vagrant/config/hadoop" >> ~/.profile
 export HADOOP_CONF_DIR=/home/vagrant/config/hadoop
+
+echo "Add JAVA_HOME to hadoop-env.sh"
+sed -i -e 's@${JAVA_HOME}@/usr/lib/jvm/java-8-oracle@' ~/config/hadoop/hadoop-env.sh
 echo "Formatting namenode"
 hdfs namenode -format
 
