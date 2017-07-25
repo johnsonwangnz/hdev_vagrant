@@ -1,3 +1,3 @@
-#Start hadoop in pseudo mode
+# Start hadoop in pseudo mode
 ./start-all.sh
 
