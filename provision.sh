@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# this is running as root
+# this runs as root as default, but previlege is off in Vagrantfile, therefore it runs as vagrant
 #stop on error
 set -e
 echo "If there was a problem, please correct and destroy and start provision process again, as the script only suppose to be run once..."
@@ -121,6 +121,7 @@ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 echo "Add pseudodistributed configuration"
 mkdir -p ~/config
+mkdir -p ~/hddata
 cp -r /home/vagrant/apps/hadoop/etc/hadoop  ~/config
 #copy config files 
 cp -r /vagrant/hadoopConfig/. ~/config/hadoop/
