@@ -138,8 +138,23 @@ echo "Copy start and stop scripts for hadoop"
 cp /vagrant/scripts/start-all.sh ~/
 cp /vagrant/scripts/stop-all.sh ~/
 
+echo "Installing swift 3.1"
+
+sudo apt-get -y install clang libicu-dev
+wget https://swift.org/builds/swift-3.1-branch/ubuntu1404/swift-3.1-DEVELOPMENT-SNAPSHOT-2017-06-14-a/swift-3.1-DEVELOPMENT-SNAPSHOT-2017-06-14-a-ubuntu14.04.tar.gz && \
+    tar -xzvf swift-3.1-DEVELOPMENT-SNAPSHOT-2017-06-14-a-ubuntu14.04.tar.gz && \
+    mv swift-3.1-DEVELOPMENT-SNAPSHOT-2017-06-14-a-ubuntu14.04 ~/apps/swift && \
+    rm swift-3.1-DEVELOPMENT-SNAPSHOT-2017-06-14-a-ubuntu14.04.tar.gz
+
+echo "export PATH=$PATH:/home/vagrant/apps/swift/usr/bin" >> ~/.profile
+export PATH=$PATH:/home/vagrant/apps/swift/usr/bin
+
+
 echo "Sucecessfully Finished provisioning of vagrant."
 echo "vagrant ssh to start using."
+
+
+
 
 
 
