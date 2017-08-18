@@ -149,6 +149,22 @@ wget https://swift.org/builds/swift-3.1-branch/ubuntu1404/swift-3.1-DEVELOPMENT-
 echo "export PATH=$PATH:/home/vagrant/apps/swift/usr/bin" >> ~/.profile
 export PATH=$PATH:/home/vagrant/apps/swift/usr/bin
 
+echo "Install spark 2.2.0"
+wget http://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz && \
+    tar -xzvf  spark-2.2.0-bin-hadoop2.7.tgz && \
+    mv spark-2.2.0-bin-hadoop2.7 ~/apps/spark && \
+    rm spark-2.2.0-bin-hadoop2.7.tgz
+
+echo "export SPARK_HOME=/home/vagrant/apps/spark" >> ~/.profile
+export SPARK_HOME=/home/vagrant/apps/spark
+
+echo "Install sbt"
+sudo apt-get update && \
+  sudo apt-get install -y apt-transport-https && \
+  echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list && \
+  sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823 && \
+  sudo apt-get update && \
+  sudo apt-get install -y sbt
 
 echo "Sucecessfully Finished provisioning of vagrant."
 echo "vagrant ssh to start using."
