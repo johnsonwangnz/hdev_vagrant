@@ -168,4 +168,4 @@ sudo apt-get update && \
 
 
 echo "Successfully finished provisioning of vagrant."
-echo "vagrant ssh to start using.
+echo "vagrant ssh to start using."
