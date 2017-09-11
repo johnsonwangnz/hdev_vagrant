@@ -166,16 +166,6 @@ sudo apt-get update && \
   sudo apt-get update && \
   sudo apt-get install -y sbt
 
-echo "Sucecessfully Finished provisioning of vagrant."
-echo "vagrant ssh to start using."
 
-
-
-
-
-
-
-
-
-
-
+echo "Successfully finished provisioning of vagrant."
+echo "vagrant ssh to start using.
